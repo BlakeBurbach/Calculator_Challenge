@@ -16,6 +16,7 @@ function readyNow(){
     $('#multiplyBtn').on('click', setMultiply );
     $('#divideBtn').on('click', setDivision );
     // $('#calculateButton').on('click', sendCalculation );
+    getCalculation();
 }
 
 // create calculation with addition
@@ -25,6 +26,7 @@ function setAddition(){
     secondNumber = parseInt($('#secondInput').val()); 
     operator = 'add';
     let calculation = new Calculation(firstNumber, secondNumber, operator);
+    console.log(calculation);
     sendCalculation(calculation);
 } // end setAddition
 
@@ -35,6 +37,7 @@ function setSubtraction(){
     secondNumber = parseInt($('#secondInput').val()); 
     operator = 'subtract';
     let calculation = new Calculation(firstNumber, secondNumber, operator);
+    console.log(calculation);
     sendCalculation(calculation);
 } // end setSubtraction
 
@@ -45,6 +48,7 @@ function setMultiply(){
     secondNumber = parseInt($('#secondInput').val()); 
     operator = 'multiply';
     let calculation = new Calculation(firstNumber, secondNumber, operator);
+    console.log(calculation);
     sendCalculation(calculation);
 } // end setMultiply
 
@@ -55,6 +59,7 @@ function setDivision(){
     secondNumber = parseInt($('#secondInput').val()); 
     operator = 'divide';
     let calculation = new Calculation(firstNumber, secondNumber, operator);
+    console.log(calculation);
     sendCalculation(calculation);
 } // end setDivision
 
@@ -65,6 +70,7 @@ function sendCalculation(calculation){
         data: calculation,
         url: '/calculation'
     }).done(function(response){
+        getCalculation();
         // response from server will be '200' success
         console.log('Success');
     }).fail(function(response){
@@ -78,13 +84,19 @@ function getCalculation(){
         type: "GET",
         url: "/calculation"
     }).done(function(response){
+        console.log(response);
         appendToDom(response);
     }); // end GET
 } // end getCalculation
 
 
-function appendToDom(response){
-    console.log(response);
+function appendToDom(calculationArray){
+    $('#calculations').empty();
+    for (let calculation of calculationArray){
+        console.log(calculation);
+        let li = $('<li> Answer: ' + calculation.answer + '</li>');
+        $('#calculations').append(li);
+    }
 }
 
 

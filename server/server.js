@@ -14,8 +14,24 @@ app.use(express.static('server/public'));
 // receive client POST
 app.post('/calculation', (req, res) => {
     let calculation = req.body;
-    console.log(calculation);
+    if ( calculation.operator === 'add' ){
+       calculation.answer = parseInt(calculation.firstNumber) + parseInt(calculation.secondNumber);
+       console.log(calculation);
+    } 
+    if ( calculation.operator === 'subtract' ){
+       calculation.answer = parseInt(calculation.firstNumber) - parseInt(calculation.secondNumber);
+       console.log(calculation);
+    } 
+    if ( calculation.operator === 'multiply' ){
+       calculation.answer = calculation.firstNumber * calculation.secondNumber;
+       console.log(calculation);
+    }
+    if ( calculation.operator === 'divide' ){
+       calculation.answer = calculation.firstNumber / calculation.secondNumber;
+       console.log(calculation);
+    }
     calculationArray.push(calculation);
+    console.log(calculationArray);
     res.sendStatus(200);
 });
 
