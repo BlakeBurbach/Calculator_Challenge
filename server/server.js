@@ -40,6 +40,11 @@ app.get('/calculation', (req, res) => {
     res.send(calculationArray);
 });
 
+app.delete('/calculation', (req, res) => {
+    calculationArray = [];
+    res.send(calculationArray);
+})
+
 //Spinning up the server
 app.listen(PORT, (req, res) => {
     console.log('Server is running on port', PORT)

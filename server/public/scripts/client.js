@@ -15,8 +15,8 @@ function readyNow(){
     $('#subtractionBtn').on('click', setSubtraction );
     $('#multiplyBtn').on('click', setMultiply );
     $('#divideBtn').on('click', setDivision );
-    // $('#calculateButton').on('click', sendCalculation );
     getCalculation();
+    $('#refresh').on('click', refreshPage);
 }
 
 // create calculation with addition
@@ -28,6 +28,7 @@ function setAddition(){
     let calculation = new Calculation(firstNumber, secondNumber, operator);
     console.log(calculation);
     sendCalculation(calculation);
+    clearInputs();
 } // end setAddition
 
 // create calculation with subtraction
@@ -39,6 +40,7 @@ function setSubtraction(){
     let calculation = new Calculation(firstNumber, secondNumber, operator);
     console.log(calculation);
     sendCalculation(calculation);
+    clearInputs();
 } // end setSubtraction
 
 // create calculation with multiplication
@@ -50,6 +52,7 @@ function setMultiply(){
     let calculation = new Calculation(firstNumber, secondNumber, operator);
     console.log(calculation);
     sendCalculation(calculation);
+    clearInputs();
 } // end setMultiply
 
 // create calculation with division
@@ -61,6 +64,7 @@ function setDivision(){
     let calculation = new Calculation(firstNumber, secondNumber, operator);
     console.log(calculation);
     sendCalculation(calculation);
+    clearInputs();
 } // end setDivision
 
 // send our data over to server
@@ -78,6 +82,11 @@ function sendCalculation(calculation){
     }) // end POST
 } // end calculate
 
+function clearInputs(){
+    $('#firstInput').val('');
+    $('#secondInput').val('');
+}
+
 // receive calculated response
 function getCalculation(){
     $.ajax({
@@ -88,7 +97,6 @@ function getCalculation(){
         appendToDom(response);
     }); // end GET
 } // end getCalculation
-
 
 function appendToDom(calculationArray){
     $('#tableBody').empty();
@@ -103,5 +111,14 @@ function appendToDom(calculationArray){
     }
 }
 
+
+function refreshPage(){
+    $.ajax({
+        type: "DELETE",
+        url: "/calculation"
+    }).done(function(response){
+        appendToDom(response);
+    })
+}
 
 // end file
