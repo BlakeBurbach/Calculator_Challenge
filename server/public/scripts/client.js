@@ -24,7 +24,7 @@ function setAddition(){
     //set the values for the calculation object being sent over
     firstNumber = parseInt($('#firstInput').val()); 
     secondNumber = parseInt($('#secondInput').val()); 
-    operator = 'add';
+    operator = '+';
     let calculation = new Calculation(firstNumber, secondNumber, operator);
     console.log(calculation);
     sendCalculation(calculation);
@@ -35,7 +35,7 @@ function setSubtraction(){
     //set the values for the calculation object being sent over
     firstNumber = parseInt($('#firstInput').val()); 
     secondNumber = parseInt($('#secondInput').val()); 
-    operator = 'subtract';
+    operator = '-';
     let calculation = new Calculation(firstNumber, secondNumber, operator);
     console.log(calculation);
     sendCalculation(calculation);
@@ -46,7 +46,7 @@ function setMultiply(){
     //set the values for the calculation object being sent over
     firstNumber = parseInt($('#firstInput').val()); 
     secondNumber = parseInt($('#secondInput').val()); 
-    operator = 'multiply';
+    operator = '*';
     let calculation = new Calculation(firstNumber, secondNumber, operator);
     console.log(calculation);
     sendCalculation(calculation);
@@ -57,7 +57,7 @@ function setDivision(){
     //set the values for the calculation object being sent over
     firstNumber = parseInt($('#firstInput').val()); 
     secondNumber = parseInt($('#secondInput').val()); 
-    operator = 'divide';
+    operator = '/';
     let calculation = new Calculation(firstNumber, secondNumber, operator);
     console.log(calculation);
     sendCalculation(calculation);
@@ -91,11 +91,15 @@ function getCalculation(){
 
 
 function appendToDom(calculationArray){
-    $('#calculations').empty();
+    $('#tableBody').empty();
     for (let calculation of calculationArray){
         console.log(calculation);
-        let li = $('<li> Answer: ' + calculation.answer + '</li>');
-        $('#calculations').append(li);
+        let tr = $('<tr></tr>');
+        tr.append('<td>' + calculation.firstNumber + '</td>' );
+        tr.append('<td>' + calculation.operator + '</td>' );
+        tr.append('<td>' + calculation.secondNumber + ' = </td>' );
+        tr.append('<td>' + calculation.answer + '</td>' );
+        $('#tableBody').append(tr);
     }
 }
 
