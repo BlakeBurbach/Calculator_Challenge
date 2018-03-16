@@ -1,0 +1,23 @@
+{
+  "name": "calculator_challenge",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BlakeBurbach/Calculator_Challenge.git"
+  },
+  "author": "Blake Burbach",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/BlakeBurbach/Calculator_Challenge/issues"
+  },
+  "homepage": "https://github.com/BlakeBurbach/Calculator_Challenge#readme",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "express": "^4.16.3"
+  }
+}
