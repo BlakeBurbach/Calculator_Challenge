@@ -13,15 +13,47 @@
     <h1>Weekend 2 Calculator Challenge</h1>
     <!-- <input type="number" placeholder="First Number" id="firstInput">
     <input type="number" placeholder="Second Number" id="secondInput"> -->
-    <table id="calculatorButtons">
+    <form action="calculator" id="calculatorBody">
+            <input id="textview">
+            <table id="calculator">
+                    <tbody>
+                        <tr>
+                            <td><input type="button" class="numBtn" value="7"></td>
+                            <td><input type="button" class="numBtn" value="8"></td>
+                            <td><input type="button" class="numBtn" value="9"></td>
+                            <td><input type="button" class="opBtn" value="+" id="additionBtn"></td>
+                        </tr>
+                        <tr>
+                            <td><input type="button" class="numBtn" value="4"></td>
+                            <td><input type="button" class="numBtn" value="5"></td>
+                            <td><input type="button" class="numBtn" value="6"></td>
+                            <td><input type="button" class="opBtn" value="-" id="subtractionBtn"></td>
+                        </tr>
+                        <tr>
+                            <td><input type="button" class="numBtn" value="1"></td>
+                            <td><input type="button" class="numBtn" value="2"></td>
+                            <td><input type="button" class="numBtn" value="3"></td>
+                            <td><input type="button" class="opBtn" value="*" id="multiplyBtn"></td>
+                        </tr>
+                        <tr>
+                            <td></td><td><input type="button" class="numBtn" value="0"></td>
+                            <td></td><td><input type="button" class="opBtn" value="/" id="divideBtn"></td>
+                        </tr>
+                        <tr>
+                            <td></td><td></td><td></td><td><input type="button" value="=" id="equals"></td>
+                        </tr>
+                    </tbody>
+                </table>
+    </form>
+    <!-- <table id="calculator">
         <tbody>
-            <tr><td><button id="seven">7</button></td><td><button id="eight">8</button></td><td><button id="nine">9</button></td><td><button id="additionBtn">+</button></td></tr>
-            <tr><td><button id="four">4</button></td><td><button id="five">5</button></td><td><button id="six">6</button></td><td><button id="subtractionBtn">-</button></td></tr>
-            <tr><td><button id="one">1</button></td><td><button id="two">2</button></td><td><button id="three">3</button></td><td><button id="multiplyBtn">x</button></td></tr>
-            <tr><td></td><td><button id="zero">0</button></td><td></td><td><button id="divideBtn">/</button></td></tr>
-            <tr><td></td><td></td><td></td><td><button id="equals">=</button></td></tr>
+            <tr><td><button class="numBtn" id="seven" value="7">7</button></td><td><button class="numBtn" id="eight" value="8">8</button></td><td><button class="numBtn" id="nine" value="9">9</button></td><td><button class="opBtn" id="additionBtn" value="+">+</button></td></tr>
+            <tr><td><button class="numBtn" id="four" value="4">4</button></td><td><button class="numBtn" id="five" value="5">5</button></td><td><button class="numBtn" id="six" value="6">6</button></td><td><button class="opBtn" id="subtractionBtn" value="-">-</button></td></tr>
+            <tr><td><button class="numBtn" id="one" value="1">1</button></td><td><button class="numBtn" id="two" value="2">2</button></td><td><button class="numBtn" id="three" value="3">3</button></td><td><button class="opBtn" id="multiplyBtn" value="*">x</button></td></tr>
+            <tr><td></td><td><button class="numBtn" id="zero" value="0">0</button></td><td></td><td><button class="opBtn" id="divideBtn" value="/">/</button></td></tr>
+            <tr><td></td><td></td><td></td><td><button id="equals" value="=">=</button></td></tr>
         </tbody>
-    </table>
+    </table> -->
     <!-- <button id="additionBtn">+</button> -->
     <!-- <button id="subtractionBtn">-</button> -->
     <!-- <button id="multiplyBtn">x</button> -->

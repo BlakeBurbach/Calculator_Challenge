@@ -1,0 +1,55 @@
+.numBtn{
+    background-color: #9e9b99;
+    border: none;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    border: 1.5px solid black;
+    border-radius: 50%;
+}
+
+.opBtn {
+    background-color: #2a2a2a;
+    border: none;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    border: 1.5px solid black;
+    border-radius: 50%;  
+}
+
+#equals{
+    background-color: #d49329;
+    border: none;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    border: 1.5px solid black;
+    border-radius: 50%; 
+}
+
+#textview{
+    background-color: #8bd17e;
+    border: none;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    border: 1.5px solid black;
+    border-radius: 25px;
+}

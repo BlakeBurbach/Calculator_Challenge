@@ -23,7 +23,7 @@ app.post('/calculation', (req, res) => {
        console.log(calculation);
     } 
     if ( calculation.operator === '*' ){
-       calculation.answer = calculation.firstNumber * calculation.secondNumber;
+       calculation.answer = parseInt(calculation.firstNumber) * calculation.secondNumber;
        console.log(calculation);
     }
     if ( calculation.operator === '/' ){

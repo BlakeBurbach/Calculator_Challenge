@@ -11,12 +11,18 @@ class Calculation {
 
 function readyNow(){
     console.log('Oh Hey there!');
+    $('#calculatorBody').on('click', '.numBtn', displayNums );
     $('#additionBtn').on('click', setAddition );
     $('#subtractionBtn').on('click', setSubtraction );
     $('#multiplyBtn').on('click', setMultiply );
     $('#divideBtn').on('click', setDivision );
     getCalculation();
     $('#refresh').on('click', refreshPage);
+}
+
+function displayNums(number){
+    let display = $('#textview').val();
+    display = $(this).val();
 }
 
 // create calculation with addition
