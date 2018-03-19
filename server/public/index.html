@@ -11,54 +11,6 @@
 </head>
 <body id="bodyContent">
     <h1>Weekend 2 Calculator Challenge</h1>
-    <!-- <input type="number" placeholder="First Number" id="firstInput">
-    <input type="number" placeholder="Second Number" id="secondInput"> -->
-    <form action="calculator" id="calculatorBody">
-            <input id="textview">
-            <table id="calculator">
-                    <tbody>
-                        <tr>
-                            <td><input type="button" class="numBtn" value="7"></td>
-                            <td><input type="button" class="numBtn" value="8"></td>
-                            <td><input type="button" class="numBtn" value="9"></td>
-                            <td><input type="button" class="opBtn" value="+" id="additionBtn"></td>
-                        </tr>
-                        <tr>
-                            <td><input type="button" class="numBtn" value="4"></td>
-                            <td><input type="button" class="numBtn" value="5"></td>
-                            <td><input type="button" class="numBtn" value="6"></td>
-                            <td><input type="button" class="opBtn" value="-" id="subtractionBtn"></td>
-                        </tr>
-                        <tr>
-                            <td><input type="button" class="numBtn" value="1"></td>
-                            <td><input type="button" class="numBtn" value="2"></td>
-                            <td><input type="button" class="numBtn" value="3"></td>
-                            <td><input type="button" class="opBtn" value="*" id="multiplyBtn"></td>
-                        </tr>
-                        <tr>
-                            <td></td><td><input type="button" class="numBtn" value="0"></td>
-                            <td></td><td><input type="button" class="opBtn" value="/" id="divideBtn"></td>
-                        </tr>
-                        <tr>
-                            <td></td><td></td><td></td><td><input type="button" value="=" id="equals"></td>
-                        </tr>
-                    </tbody>
-                </table>
-    </form>
-    <!-- <table id="calculator">
-        <tbody>
-            <tr><td><button class="numBtn" id="seven" value="7">7</button></td><td><button class="numBtn" id="eight" value="8">8</button></td><td><button class="numBtn" id="nine" value="9">9</button></td><td><button class="opBtn" id="additionBtn" value="+">+</button></td></tr>
-            <tr><td><button class="numBtn" id="four" value="4">4</button></td><td><button class="numBtn" id="five" value="5">5</button></td><td><button class="numBtn" id="six" value="6">6</button></td><td><button class="opBtn" id="subtractionBtn" value="-">-</button></td></tr>
-            <tr><td><button class="numBtn" id="one" value="1">1</button></td><td><button class="numBtn" id="two" value="2">2</button></td><td><button class="numBtn" id="three" value="3">3</button></td><td><button class="opBtn" id="multiplyBtn" value="*">x</button></td></tr>
-            <tr><td></td><td><button class="numBtn" id="zero" value="0">0</button></td><td></td><td><button class="opBtn" id="divideBtn" value="/">/</button></td></tr>
-            <tr><td></td><td></td><td></td><td><button id="equals" value="=">=</button></td></tr>
-        </tbody>
-    </table> -->
-    <!-- <button id="additionBtn">+</button> -->
-    <!-- <button id="subtractionBtn">-</button> -->
-    <!-- <button id="multiplyBtn">x</button> -->
-    <!-- <button id="divideBtn">/</button> -->
-    <!-- <button id="calculateButton">Calculate</button> -->
     <h2>History: </h2>
     <table>
         <thead>
@@ -67,6 +19,40 @@
             <!-- this is where a history of calculations will go -->
         </tbody>
     </table>
-    <button id="refresh">Refresh</button>
+    <table id="calculator">
+        <thead>
+                <tr><input type="text" id="display" value="0"></tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><button class="numBtn" data-number="7">7</button></td>
+                <td><button class="numBtn" data-number="8">8</button></td>
+                <td><button class="numBtn" data-number="9">9</button></td>
+                <td><button class="opBtn" data-operator="+">+</button></td>
+            </tr>
+            <tr>
+                <td><button class="numBtn" data-number="4">4</button></td>
+                <td><button class="numBtn" data-number="5">5</button></td>
+                <td><button class="numBtn" data-number="6">6</button></td>
+                <td><button class="opBtn" data-operator="-">-</button></td>
+            </tr>
+            <tr>
+                <td><button class="numBtn" data-number="1">1</button></td>
+                <td><button class="numBtn" data-number="2">2</button></td>
+                <td><button class="numBtn" data-number="3">3</button></td>
+                <td><button class="opBtn" data-operator="*">x</button></td>
+            </tr>
+            <tr>
+                <td><button id="clear">D</button></td>
+                <td><button class="numBtn" data-number="0">0</button></td>
+                <td><button id="refresh">C</button></td>
+                <td><button class="opBtn" data-operator="/">/</button></td>
+            </tr>
+            <tr>
+                <td></td><td></td><td></td><td><button id="equals">=</button></td>
+            </tr>
+        </tbody>
+    </table>
+    </form>
 </body>
 </html>

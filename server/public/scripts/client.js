@@ -1,77 +1,71 @@
 $(document).ready(readyNow);
 
+let calculation; // global object of the Calculation class
+let displayNumber = ''; // going to be used to create first and second numbers for class object
+let firstNumberEntered = false; // tells the displayNum function whether or not to create second number
+let newCalculation = true; 
+
 class Calculation {
-    constructor(firstNumberIn, secondNumberIn, operatorIn){
+    constructor(firstNumberIn){
         this.firstNumber = firstNumberIn;
-        this.secondNumber = secondNumberIn;
-        this.operator = operatorIn;
+        this.secondNumber = '';
+        this.operator = '';
         this.answer = '';
     }
 }
 
 function readyNow(){
     console.log('Oh Hey there!');
-    $('#calculatorBody').on('click', '.numBtn', displayNums );
-    $('#additionBtn').on('click', setAddition );
-    $('#subtractionBtn').on('click', setSubtraction );
-    $('#multiplyBtn').on('click', setMultiply );
-    $('#divideBtn').on('click', setDivision );
-    getCalculation();
+    $('.numBtn').on('click', displayNum );
+    $('.opBtn').on('click', displayOps);
+    $('#equals').on('click', makeCalculation);
     $('#refresh').on('click', refreshPage);
+    $('#clear').on('click', clearInputs);
+    getCalculation();
+    clearInputs();
 }
 
-function displayNums(number){
-    let display = $('#textview').val();
-    display = $(this).val();
+function displayNum(){
+    if ( newCalculation === false){
+    clearInputs();
+    newCalculation = true;
+    } else {
+        if (firstNumberEntered === false ){
+            console.log($(this).data('number'));
+            let number = $(this).data('number')
+            let calcDisplay = $('#display').val();
+            $('#display').val(calcDisplay + number);
+            displayNumber += number;
+            calculation = new Calculation(displayNumber);
+        }
+        else if (firstNumberEntered === true){
+            let number = $(this).data('number');
+            let calcDisplay = $('#display').val();
+            $('#display').val(calcDisplay + number);
+            console.log(number);
+            displayNumber += number;
+            calculation.secondNumber = displayNumber;
+        }
+    }
 }
 
-// create calculation with addition
-function setAddition(){
-    //set the values for the calculation object being sent over
-    firstNumber = parseInt($('#firstInput').val()); 
-    secondNumber = parseInt($('#secondInput').val()); 
-    operator = '+';
-    let calculation = new Calculation(firstNumber, secondNumber, operator);
-    console.log(calculation);
-    sendCalculation(calculation);
-    clearInputs();
-} // end setAddition
+function displayOps(){
+    if( firstNumberEntered === false){
+        console.log($(this).data('operator'));
+        calculation.operator = $(this).data('operator');
+        console.log(calculation.operator);
+        let calcDisplay = $('#display').val();
+        $('#display').val(calculation.firstNumber + calculation.operator);
+        displayNumber = '';
+        return firstNumberEntered = true;
+    }
+}
 
-// create calculation with subtraction
-function setSubtraction(){
-    //set the values for the calculation object being sent over
-    firstNumber = parseInt($('#firstInput').val()); 
-    secondNumber = parseInt($('#secondInput').val()); 
-    operator = '-';
-    let calculation = new Calculation(firstNumber, secondNumber, operator);
-    console.log(calculation);
+function makeCalculation(){
+    calculation.secondNumber = displayNumber;
     sendCalculation(calculation);
     clearInputs();
-} // end setSubtraction
-
-// create calculation with multiplication
-function setMultiply(){
-    //set the values for the calculation object being sent over
-    firstNumber = parseInt($('#firstInput').val()); 
-    secondNumber = parseInt($('#secondInput').val()); 
-    operator = '*';
-    let calculation = new Calculation(firstNumber, secondNumber, operator);
-    console.log(calculation);
-    sendCalculation(calculation);
-    clearInputs();
-} // end setMultiply
-
-// create calculation with division
-function setDivision(){
-    //set the values for the calculation object being sent over
-    firstNumber = parseInt($('#firstInput').val()); 
-    secondNumber = parseInt($('#secondInput').val()); 
-    operator = '/';
-    let calculation = new Calculation(firstNumber, secondNumber, operator);
-    console.log(calculation);
-    sendCalculation(calculation);
-    clearInputs();
-} // end setDivision
+}
 
 // send our data over to server
 function sendCalculation(calculation){
@@ -89,8 +83,10 @@ function sendCalculation(calculation){
 } // end calculate
 
 function clearInputs(){
-    $('#firstInput').val('');
-    $('#secondInput').val('');
+    $('#display').val('');
+    displayNumber = '';
+    firstNumberEntered = false;
+    calculation = '';
 }
 
 // receive calculated response
@@ -114,6 +110,8 @@ function appendToDom(calculationArray){
         tr.append('<td>' + calculation.secondNumber + ' = </td>' );
         tr.append('<td>' + calculation.answer + '</td>' );
         $('#tableBody').append(tr);
+        $('#display').val(calculation.answer);
+        newCalculation = false;
     }
 }
 
@@ -124,6 +122,7 @@ function refreshPage(){
         url: "/calculation"
     }).done(function(response){
         appendToDom(response);
+        clearInputs();
     })
 }
 
