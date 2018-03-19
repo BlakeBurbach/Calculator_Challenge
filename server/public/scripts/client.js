@@ -35,7 +35,6 @@ function displayNum(){
         newCalculation = true;
     } // end if
     if (firstNumberEntered === false ){ // create first number
-        console.log($(this).data('number'));
         let number = $(this).data('number')
         let calcDisplay = $('#display').val();
         $('#display').val(calcDisplay + number);
@@ -46,7 +45,6 @@ function displayNum(){
         let number = $(this).data('number');
         let calcDisplay = $('#display').val();
         $('#display').val(calcDisplay + number);
-        console.log(number);
         displayNumber += number; // now that it's cleared, use global to set calculation object's second number
         calculation.secondNumber = displayNumber; // sets calculation object's second number
     } // end else if
@@ -55,9 +53,7 @@ function displayNum(){
 // on click operator sets the operator for calculation
 function displayOps(){
     if( firstNumberEntered === false) { // select an operator
-        console.log($(this).data('operator'));
         calculation.operator = $(this).data('operator'); // sets calculation's operator property to selected operator
-        console.log(calculation.operator);
         let calcDisplay = $('#display').val();
         $('#display').val(calculation.firstNumber + calculation.operator);
         displayNumber = ''; // clear global var so second number can use it
@@ -82,7 +78,7 @@ function sendCalculation(calculation){
         // response from server will be '200' success
         console.log('Success');
     }).fail(function(response){
-        console.log('Uh-oh! Something went wrong...');
+        alert('Uh-oh! Something went wrong...');
     }) // end POST
 } // end calculate
 
@@ -94,7 +90,6 @@ function getCalculation(){
         url: "/calculation"
     }).done(function(response){
         // the response is the array
-        console.log(response);
         appendToDom(response);
     }); // end GET
 } // end getCalculation
@@ -103,7 +98,6 @@ function getCalculation(){
 function appendToDom(calculationArray){
     $('#tableBody').empty(); // empty so we only see the updated calculationsArray from server
     for (let calculation of calculationArray){
-        console.log(calculation);
         let tr = $('<tr></tr>');
         tr.append('<td>' + calculation.firstNumber + '</td>' );
         tr.append('<td>' + calculation.operator + '</td>' );
