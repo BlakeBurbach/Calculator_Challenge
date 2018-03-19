@@ -1,4 +1,6 @@
 # Calculator_Challenge
+This ended up changing and I didn't add checkpoints for the rest! Oops!
+
 - [x] Get file structure set up
 - [x] Get the server and client sides ready
 - [x] On the client side:
